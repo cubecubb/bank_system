@@ -20,6 +20,6 @@ namespace bank_system.Model
         public double Amount { get; set; }
         public string Account { get; set; }
     
-        public virtual Bank_account Bank_account { get; set; }
+        public virtual BankAccount BankAccount { get; set; }
     }
 }

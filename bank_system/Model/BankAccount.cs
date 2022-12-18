@@ -12,10 +12,10 @@ namespace bank_system.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Bank_account
+    public partial class BankAccount
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Bank_account()
+        public BankAccount()
         {
             this.History = new HashSet<History>();
         }

@@ -17,7 +17,7 @@ namespace bank_system.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public User()
         {
-            this.Bank_account = new HashSet<Bank_account>();
+            this.BankAccount = new HashSet<BankAccount>();
             this.Contract = new HashSet<Contract>();
         }
     
@@ -38,7 +38,7 @@ namespace bank_system.Model
         public string PlaceOfBirth { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Bank_account> Bank_account { get; set; }
+        public virtual ICollection<BankAccount> BankAccount { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Contract> Contract { get; set; }
     }

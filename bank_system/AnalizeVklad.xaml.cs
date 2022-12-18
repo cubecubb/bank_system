@@ -25,7 +25,12 @@ namespace Bank
     /// </summary>
     public partial class AnalizeVklad : Window
     {
-        
+        int amount = 1000;
+        int period = 1;
+        double percet1 = 9.85;
+        double percet2 = 6.1;
+        double percet3 = 6.55;
+
         public AnalizeVklad(int sum,int time)
         {
             InitializeComponent();
@@ -38,21 +43,21 @@ namespace Bank
 
         private void btn_openStab_Click(object sender, RoutedEventArgs e)
         {
-           authoriz authoriz = new authoriz();
+           authoriz authoriz = new authoriz(amount, period, percet1);
             authoriz.Show();
             this.Close();
         }
 
         private void btn_OpenOpt_Click(object sender, RoutedEventArgs e)
         {
-            authoriz authoriz = new authoriz();
+            authoriz authoriz = new authoriz(amount, period, percet2);
             authoriz.Show();
             this.Close();
         }
 
         private void btn_openStandart_Click(object sender, RoutedEventArgs e)
         {
-            authoriz authoriz = new authoriz();
+            authoriz authoriz = new authoriz(amount, period, percet3);
             authoriz.Show();
             this.Close();
         }
@@ -102,6 +107,7 @@ namespace Bank
                 PdfBitmap image = new PdfBitmap(@"C:\Users\msi gf65\source\repos\bank_system\screenshot.png");
                 pdf.DrawImage(image, 0, 0);
                 doc.Save(@"C:\Users\msi gf65\source\repos\bank_system\выписка.pdf");
+                MessageBox.Show("Выписка сформирована.");
                 doc.Close(true);
             }
             catch (Exception e)

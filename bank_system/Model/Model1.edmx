@@ -5,7 +5,7 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="Хранилище modulesModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Bank account">
+        <EntityType Name="BankAccount">
           <Key>
             <PropertyRef Name="NumberAccount" />
           </Key>
@@ -76,24 +76,24 @@
         </EntityType>
         <Association Name="FK_Bank account_Type">
           <End Role="Type" Type="Self.Type" Multiplicity="1" />
-          <End Role="Bank account" Type="Self.Bank account" Multiplicity="*" />
+          <End Role="BankAccount" Type="Self.BankAccount" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Type">
               <PropertyRef Name="IDType" />
             </Principal>
-            <Dependent Role="Bank account">
+            <Dependent Role="BankAccount">
               <PropertyRef Name="TypeID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Bank account_User">
           <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="Bank account" Type="Self.Bank account" Multiplicity="*" />
+          <End Role="BankAccount" Type="Self.BankAccount" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
               <PropertyRef Name="IDUser" />
             </Principal>
-            <Dependent Role="Bank account">
+            <Dependent Role="BankAccount">
               <PropertyRef Name="UserID" />
             </Dependent>
           </ReferentialConstraint>
@@ -111,10 +111,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_History_Bank account">
-          <End Role="Bank account" Type="Self.Bank account" Multiplicity="1" />
+          <End Role="BankAccount" Type="Self.BankAccount" Multiplicity="1" />
           <End Role="History" Type="Self.History" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Bank account">
+            <Principal Role="BankAccount">
               <PropertyRef Name="NumberAccount" />
             </Principal>
             <Dependent Role="History">
@@ -123,7 +123,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="Хранилище modulesModelContainer">
-          <EntitySet Name="Bank account" EntityType="Self.Bank account" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BankAccount" EntityType="Self.BankAccount" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Contract" EntityType="Self.Contract" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="History" EntityType="Self.History" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
@@ -131,18 +131,18 @@
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Bank account_Type" Association="Self.FK_Bank account_Type">
             <End Role="Type" EntitySet="Type" />
-            <End Role="Bank account" EntitySet="Bank account" />
+            <End Role="BankAccount" EntitySet="BankAccount" />
           </AssociationSet>
           <AssociationSet Name="FK_Bank account_User" Association="Self.FK_Bank account_User">
             <End Role="User" EntitySet="User" />
-            <End Role="Bank account" EntitySet="Bank account" />
+            <End Role="BankAccount" EntitySet="BankAccount" />
           </AssociationSet>
           <AssociationSet Name="FK_Contract_User" Association="Self.FK_Contract_User">
             <End Role="User" EntitySet="User" />
             <End Role="Contract" EntitySet="Contract" />
           </AssociationSet>
           <AssociationSet Name="FK_History_Bank account" Association="Self.FK_History_Bank account">
-            <End Role="Bank account" EntitySet="Bank account" />
+            <End Role="BankAccount" EntitySet="BankAccount" />
             <End Role="History" EntitySet="History" />
           </AssociationSet>
         </EntityContainer>
@@ -151,7 +151,7 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="modulesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Bank_account">
+        <EntityType Name="BankAccount">
           <Key>
             <PropertyRef Name="NumberAccount" />
           </Key>
@@ -160,9 +160,9 @@
           <Property Name="DateOpen" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Balance" Type="Double" Nullable="false" />
           <Property Name="TypeID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Type" Relationship="Self.FK_Bank_account_Type" FromRole="Bank_account" ToRole="Type" />
-          <NavigationProperty Name="User" Relationship="Self.FK_Bank_account_User" FromRole="Bank_account" ToRole="User" />
-          <NavigationProperty Name="History" Relationship="Self.FK_History_Bank_account" FromRole="Bank_account" ToRole="History" />
+          <NavigationProperty Name="Type" Relationship="Self.FK_Bank_account_Type" FromRole="BankAccount" ToRole="Type" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Bank_account_User" FromRole="BankAccount" ToRole="User" />
+          <NavigationProperty Name="History" Relationship="Self.FK_History_Bank_account" FromRole="BankAccount" ToRole="History" />
         </EntityType>
         <EntityType Name="Contract">
           <Key>
@@ -186,7 +186,7 @@
           <Property Name="DateTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Amount" Type="Double" Nullable="false" />
           <Property Name="Account" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Bank_account" Relationship="Self.FK_History_Bank_account" FromRole="History" ToRole="Bank_account" />
+          <NavigationProperty Name="BankAccount" Relationship="Self.FK_History_Bank_account" FromRole="History" ToRole="BankAccount" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -204,7 +204,7 @@
           </Key>
           <Property Name="IDType" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NameType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Bank_account" Relationship="Self.FK_Bank_account_Type" FromRole="Type" ToRole="Bank_account" />
+          <NavigationProperty Name="BankAccount" Relationship="Self.FK_Bank_account_Type" FromRole="Type" ToRole="BankAccount" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -225,38 +225,38 @@
           <Property Name="Issued" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="DateOfBirth" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="PlaceOfBirth" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Bank_account" Relationship="Self.FK_Bank_account_User" FromRole="User" ToRole="Bank_account" />
+          <NavigationProperty Name="BankAccount" Relationship="Self.FK_Bank_account_User" FromRole="User" ToRole="BankAccount" />
           <NavigationProperty Name="Contract" Relationship="Self.FK_Contract_User" FromRole="User" ToRole="Contract" />
         </EntityType>
         <Association Name="FK_Bank_account_Type">
           <End Role="Type" Type="Self.Type" Multiplicity="1" />
-          <End Role="Bank_account" Type="Self.Bank_account" Multiplicity="*" />
+          <End Role="BankAccount" Type="Self.BankAccount" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Type">
               <PropertyRef Name="IDType" />
             </Principal>
-            <Dependent Role="Bank_account">
+            <Dependent Role="BankAccount">
               <PropertyRef Name="TypeID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Bank_account_User">
           <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="Bank_account" Type="Self.Bank_account" Multiplicity="*" />
+          <End Role="BankAccount" Type="Self.BankAccount" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
               <PropertyRef Name="IDUser" />
             </Principal>
-            <Dependent Role="Bank_account">
+            <Dependent Role="BankAccount">
               <PropertyRef Name="UserID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_History_Bank_account">
-          <End Role="Bank_account" Type="Self.Bank_account" Multiplicity="1" />
+          <End Role="BankAccount" Type="Self.BankAccount" Multiplicity="1" />
           <End Role="History" Type="Self.History" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Bank_account">
+            <Principal Role="BankAccount">
               <PropertyRef Name="NumberAccount" />
             </Principal>
             <Dependent Role="History">
@@ -277,7 +277,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="modulesEntities1" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Bank_account" EntityType="Self.Bank_account" />
+          <EntitySet Name="BankAccount" EntityType="Self.BankAccount" />
           <EntitySet Name="Contract" EntityType="Self.Contract" />
           <EntitySet Name="History" EntityType="Self.History" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
@@ -285,14 +285,14 @@
           <EntitySet Name="User" EntityType="Self.User" />
           <AssociationSet Name="FK_Bank_account_Type" Association="Self.FK_Bank_account_Type">
             <End Role="Type" EntitySet="Type" />
-            <End Role="Bank_account" EntitySet="Bank_account" />
+            <End Role="BankAccount" EntitySet="BankAccount" />
           </AssociationSet>
           <AssociationSet Name="FK_Bank_account_User" Association="Self.FK_Bank_account_User">
             <End Role="User" EntitySet="User" />
-            <End Role="Bank_account" EntitySet="Bank_account" />
+            <End Role="BankAccount" EntitySet="BankAccount" />
           </AssociationSet>
           <AssociationSet Name="FK_History_Bank_account" Association="Self.FK_History_Bank_account">
-            <End Role="Bank_account" EntitySet="Bank_account" />
+            <End Role="BankAccount" EntitySet="BankAccount" />
             <End Role="History" EntitySet="History" />
           </AssociationSet>
           <AssociationSet Name="FK_Contract_User" Association="Self.FK_Contract_User">
@@ -306,9 +306,9 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="Хранилище modulesModelContainer" CdmEntityContainer="modulesEntities1">
-          <EntitySetMapping Name="Bank_account">
-            <EntityTypeMapping TypeName="modulesModel.Bank_account">
-              <MappingFragment StoreEntitySet="Bank account">
+          <EntitySetMapping Name="BankAccount">
+            <EntityTypeMapping TypeName="modulesModel.BankAccount">
+              <MappingFragment StoreEntitySet="BankAccount">
                 <ScalarProperty Name="NumberAccount" ColumnName="NumberAccount" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="DateOpen" ColumnName="DateOpen" />

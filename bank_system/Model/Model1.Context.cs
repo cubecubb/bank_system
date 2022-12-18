@@ -25,7 +25,7 @@ namespace bank_system.Model
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Bank_account> Bank_account { get; set; }
+        public virtual DbSet<BankAccount> BankAccount { get; set; }
         public virtual DbSet<Contract> Contract { get; set; }
         public virtual DbSet<History> History { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }

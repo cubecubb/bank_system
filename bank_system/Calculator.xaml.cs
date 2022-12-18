@@ -40,7 +40,7 @@ namespace Bank
             form1.txb_sumStab.Text = txt_moneyout.Text;
             form1.txb_SumOpt.Text = txt_moneyoptim.Text;
             form1.txb_SumStandart.Text = txt_moneystandart.Text;
-            double EndSum = C+itog;
+            double EndSum = C + itog;
             double EndSum2 = C + itog2;
             double EndSum3 = C + itog3;
             form1.txb_endSumStab.Text = EndSum.ToString();
@@ -82,7 +82,6 @@ namespace Bank
             {
 
             }
-
 
         }
 

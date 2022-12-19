@@ -61,7 +61,7 @@ namespace bank_system
                 else
                 {
                     int IDUser = helper.FindUsers(login, password);
-                    if (IDUser >= 0)
+                    if (IDUser > 0)
                     {
                         int IDContract = helper.CreateContract(IDUser, amount, period, percet);
                         Contract contract = helper.FindContract(IDContract);
